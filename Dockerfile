@@ -171,7 +171,7 @@ RUN apt-get update && apt-get upgrade -y
 ARG PROJECT_NAME
 ENV PROJECT_NAME=$PROJECT_NAME
 
-COPY --chmod=+x entrypoint.sh /entrypoint.sh
+COPY --chmod=755 entrypoint.sh /entrypoint.sh
 
 USER ${USERNAME}
 
