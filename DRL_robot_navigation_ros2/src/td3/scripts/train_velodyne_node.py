@@ -102,7 +102,7 @@ class td3(object):
         self.critic_optimizer = torch.optim.Adam(self.critic.parameters())
 
         self.max_action = max_action
-        self.writer = SummaryWriter(log_dir="./DRL_robot_navigation_ros2/src/td3/scripts/runs")
+        self.writer = SummaryWriter(log_dir="./runs")
         # os.path.dirname(os.path.realpath(__file__)) + "/runs"
         self.iter_count = 0
 
@@ -206,6 +206,8 @@ class td3(object):
         self.writer.add_scalar("Max. Q", max_Q, self.iter_count)
 
     def save(self, filename, directory):
+        if not os.path.exists(directory):
+            os.makedirs(directory)
         torch.save(self.actor.state_dict(), "%s/%s_actor.pth" % (directory, filename))
         torch.save(self.critic.state_dict(), "%s/%s_critic.pth" % (directory, filename))
 
@@ -740,7 +742,6 @@ if __name__ == '__main__':
                         noise_clip,
                         policy_freq,
                         )
-
                     if timesteps_since_eval >= eval_freq:
                         env.get_logger().info("Validating")
                         timesteps_since_eval %= eval_freq
@@ -748,8 +749,8 @@ if __name__ == '__main__':
                             evaluate(network=network, epoch=epoch, eval_episodes=eval_ep)
                         )
 
-                        network.save(file_name, directory="./DRL_robot_navigation_ros2/src/td3/scripts/pytorch_models")
-                        np.save("./DRL_robot_navigation_ros2/src/td3/scripts/results/%s" % (file_name), evaluations)
+                        network.save(file_name, directory="./pytorch_models")
+                        np.save("./results/%s" % (file_name), evaluations)
                         epoch += 1
 
                     state = env.reset()
