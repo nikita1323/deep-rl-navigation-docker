@@ -4,6 +4,7 @@
 2. Go into cloned repo folder: `cd deep-rl-navigation-docker`
 3. Set permissions for bash scripts: `sudo chmod +x ./setup-env.sh ./build-docker.sh ./run-docker.sh`
 4. Set some of your host machine environment variables: `. ./setup-env.sh`
+
 At this step you can configure torch variant, i.e. with gpu support/only cpu. Default is cpu. If you choose gpu support ensure NVIDIA drivers and NVIDIA Container Toolkit are installed. See: https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html
 6. Build docker container: `./build-docker.sh`
 7. Run docker container: `./run-docker.sh`
