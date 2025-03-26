@@ -1,3 +1,21 @@
+# This is a docker overlay for 'Goal-Driven Deep RL Policy for Robot Navigation' project
+## How to run
+1. Clone this repo into desired folder: `git clone https://github.com/nikita1323/deep-rl-navigation-docker.git`
+2. Go into cloned repo folder: `cd deep-rl-navigation-docker`
+3. Set permissions for bash scripts: `sudo chmod +x ./setup-env.sh ./build-docker.sh ./run-docker.sh`
+4. Set some of your host machine environment variables: `. ./setup-env.sh`
+
+At this step you can configure torch variant, i.e. with gpu support/only cpu. Default is cpu. If you choose gpu support ensure NVIDIA drivers and NVIDIA Container Toolkit are installed. See: https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html
+
+5. Build docker container: `./build-docker.sh`
+6. Run docker container: `./run-docker.sh`
+7. Next, whether you want to train your model or use pretrained weights (not the best) choose from the corresponding commands:
+   - `ros2 launch td3 training_simulation.launch.py` for training
+   - `ros2 launch td3 test_simulation.launch` for testing
+8. If you wish to see the reward function plot open a new terminal and execute: `docker exec -it drl-robot-navigation-ros2-docker-container`
+9. Proceed into the following directory: `cd $PROJECT_NAME/runs`
+10. Execute: `tensorboard --logdir . --bind_all`
+11. Now open the link appeared in the terminal and watch you agent learn
 # Goal-Driven Deep RL Policy for Robot Navigation
 Deep Reinforcement Learning for mobile robot navigation in ROS2 Gazebo simulator. Using Twin Delayed Deep Deterministic Policy Gradient (TD3) neural network, a robot learns to navigate to a random goal point in a simulated environment while avoiding obstacles. Trained in ROS2 Humble & Gazebo simulator with PyTorch.
 
