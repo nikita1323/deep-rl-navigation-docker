@@ -488,7 +488,7 @@ if __name__ == '__main__':
     # Create the network
     network = td3(state_dim, action_dim)
     try:
-        network.load(file_name, "./DRL_robot_navigation_ros2/src/td3/scripts/pytorch_models")
+        network.load(file_name, "./pytorch_models")
     except:
         raise ValueError("Could not load the stored model parameters")
 
