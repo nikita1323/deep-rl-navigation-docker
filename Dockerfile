@@ -175,6 +175,8 @@ COPY --chmod=755 entrypoint.sh /entrypoint.sh
 
 USER ${USERNAME}
 
+RUN rosdep update
+
 ENTRYPOINT ["/entrypoint.sh"]
 
 CMD []

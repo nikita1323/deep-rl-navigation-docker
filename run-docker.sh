@@ -11,8 +11,8 @@ DOCKER_CMD="docker run -it \
     -v \"$PWD/$PROJECT_NAME:/$PROJECT_NAME\" \
     -v \"$PWD/requirements.txt:/$PROJECT_NAME/requirements.txt\""
 
-# Add GPU flag if USE_GPU is true
-if [ "$USE_GPU" = "gpu" ]; then
+# Add GPU flag
+if [ "$TORCH_VARIANT" = "gpu" ]; then
     DOCKER_CMD="$DOCKER_CMD --gpus all"
 fi
 

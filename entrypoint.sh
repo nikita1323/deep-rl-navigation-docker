@@ -2,9 +2,7 @@
 
 set -e
 
-rosdep update
 cd /$PROJECT_NAME
-echo "$PWD"
 rosdep install --from-paths src --ignore-src -y
 colcon build
 source install/setup.bash
