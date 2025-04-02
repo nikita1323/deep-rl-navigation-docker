@@ -1,4 +1,4 @@
-# This is a docker overlay for 'Goal-Driven Deep RL Policy for Robot Navigation' project
+# This is a docker overlay for 'Goal-Driven Deep RL Policy for Robot Navigation' project (https://github.com/vishweshvhavle/deep-rl-navigation)
 ## How to run
 1. Clone this repo into desired folder: `git clone https://github.com/nikita1323/deep-rl-navigation-docker.git`
 2. Go into cloned repo folder: `cd deep-rl-navigation-docker`
